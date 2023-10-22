@@ -1,0 +1,25 @@
+import random
+board=[[random.randint(0,1) for t in range(8)] for t in range(8)]
+igr=1 
+while igr!=0:
+    print("Doska:")
+    for row in board:
+        b = ["O" if k==1 else "-" for k in row]
+        print("|".join(b))
+    if all(all(k==0 for k in row) for row in board):
+        print("igrok",igr,"pobedil")
+        break
+    print("hodit igrok",igr)
+    while igr!=0:
+        row=int(input("nomer stroki: "))-1
+        col=int(input("nomer stolbca: "))-1
+        if (row<8 and col<8) and board[row][col] == 1:
+            break
+        else:
+            print("oshibka,try again")
+    for i in range(8):
+        board[row][i] = 0
+    for i in range(8):
+        board[i][col] = 0
+    if igr == 1:igr=2
+    else: igr=1
